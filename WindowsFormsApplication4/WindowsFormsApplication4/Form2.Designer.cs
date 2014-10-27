@@ -75,6 +75,8 @@
             this.title.Name = "title";
             this.title.Size = new System.Drawing.Size(143, 20);
             this.title.TabIndex = 5;
+            this.title.Text = "Enter Message here";
+            this.title.MouseClick += new System.Windows.Forms.MouseEventHandler(this.title_MouseClick);
             this.title.TextChanged += new System.EventHandler(this.title_TextChanged);
             // 
             // pictureBox1
@@ -124,6 +126,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "I",
