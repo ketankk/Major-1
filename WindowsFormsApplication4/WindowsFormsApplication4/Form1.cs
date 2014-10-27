@@ -14,9 +14,6 @@ namespace WindowsFormsApplication4
 {
     public partial class Form1 : Form
     {
-        string fac_password,fac_email; //Storing login credentials
-        string name5;
-
         public Form1()
         {
          
@@ -68,14 +65,12 @@ namespace WindowsFormsApplication4
         //Password input box
         private void pass_TextChanged(object sender, EventArgs e)
         {
-            pass.PasswordChar = '*';    //Converts input to *;
-            pass.Font =new Font("Arial", 5.0f);
-            fac_password = pass.Text;
+            
         }
 
         private void email1_TextChanged(object sender, EventArgs e)
         {
-            fac_email = email1.Text;
+            
         }
 
        
@@ -84,7 +79,7 @@ namespace WindowsFormsApplication4
         {
 
             string tag = "login";
-            string content = "tag=" + tag + "&email=" + fac_email +"&password=" + fac_password;
+            string content = "tag=" + tag + "&email=" + email1.Text +"&password=" + pass.Text;
 
             string URL = "http://localhost/pro/desktop2/index.php";
             string URI = "http://k3k.bugs3.com/desktop2/index.php";
@@ -121,9 +116,9 @@ namespace WindowsFormsApplication4
              */
             else
             {
-                name5 = responseFromServer;
+                string name5 = responseFromServer.Substring(0, 1);
                 MessageBox.Show("Login Successfull " + name5);
-            Form2 form = new Form2();
+            Form2 form = new Form2(name5);
             form.StartPosition = FormStartPosition.WindowsDefaultLocation;
             this.Hide();
             form.ShowDialog();
@@ -133,10 +128,6 @@ namespace WindowsFormsApplication4
             dataStream.Close();
             response.Close();
 
-        }
-        public string name4()
-        {
-            return name5;
         }
     }
 }
