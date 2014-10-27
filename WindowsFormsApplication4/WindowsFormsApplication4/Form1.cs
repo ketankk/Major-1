@@ -96,17 +96,13 @@ namespace WindowsFormsApplication4
             WebResponse response = request.GetResponse();
             dataStream = response.GetResponseStream();
             StreamReader reader = new StreamReader(dataStream);
-            string responseFromServer = HttpUtility.UrlDecode(reader.ReadToEnd());
+            string responseFromServer = HttpUtility.UrlDecode(reader.ReadToEnd()).Split('<')[0];
             
 
-            if (responseFromServer == "false")
+            if (responseFromServer == "#false")
             {
                 MessageBox.Show("Either Email or Password is wrong");
-                Form1 form = new Form1();
-                form.StartPosition = FormStartPosition.WindowsDefaultLocation;
-                this.Hide();
-                form.ShowDialog();
-                this.Close();
+                
             }
             
             
@@ -116,10 +112,10 @@ namespace WindowsFormsApplication4
              */
             else
             {
-                string name5 = responseFromServer.Split('<')[0];
+                string name5 = responseFromServer;
 
                 MessageBox.Show("Login Successfull " + name5);
-            Form2 form = new Form2(name5.Substring(0, 1));
+            Form2 form = new Form2(name5);
             form.StartPosition = FormStartPosition.WindowsDefaultLocation;
             this.Hide();
             form.ShowDialog();
