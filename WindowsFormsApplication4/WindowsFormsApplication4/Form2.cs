@@ -15,16 +15,13 @@ namespace WindowsFormsApplication4
     public partial class Form2 : Form
     {
         string not_title="", not_message="", not_for="";
-        string name5="kte";
-        public Form2()
+        //string name5="kte";
+        public Form2(string user)
         {
             InitializeComponent();
             
             
-            Form1 name2 = new Form1();
-            name5 = name2.name4();
-
-            label1.Text = name5;
+            label1.Text = user;
 
         }
 
